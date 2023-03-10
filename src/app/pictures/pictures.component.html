@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center m-4">
+    <h1>Photo Album</h1>
+</div> 
+
+<div class="container" >
+    <div class="container_items row" >
+        <div class="polaroid col-sm-6 col-md-4 col-lg-3" *ngFor="let picture of pictures">
+            <div class="polaroid_content">
+                <div class="polaroid__content-image">
+                    <img [src]="picture.url" [alt]="picture.title">
+                </div>
+                <div class="polaroid__content-caption">
+                    <p> {{ picture.title }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script src="./pictures.js"></script> -->
+
+<router-outlet></router-outlet>

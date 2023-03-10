@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center m-4"><h1>Personal info</h1></div>
+
+<form [formGroup]="formPerson" (ngSubmit)="onSubmit()" class="cf">
+    <div class="half left cf">
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" id="name" formControlName="name">
+        <div *ngIf="formPerson.get('name').invalid && (formPerson.get('name').dirty || formPerson.get('name').touched)">
+            <div *ngIf="formPerson.get('name').errors.required" id="message">The name is required.</div>
+            <div *ngIf="formPerson.get('name').errors.minlength" id="message">The name must have at least 2 characters.</div>
+            <div *ngIf="formPerson.get('name').errors.pattern" id="message">The name can only contain letters and spaces.</div>
+        </div>
+    </div>
+    <div>
+        <label class="m-3" for="lastname">Lastname: </label>
+        <input type="text" id="lastname" formControlName="lastname">
+        <div
+            *ngIf="formPerson.get('lastname').invalid && (formPerson.get('lastname').dirty || formPerson.get('lastname').touched)">
+            <div *ngIf="formPerson.get('lastname').errors.required" id="message">The lastname is required.</div>
+            <div *ngIf="formPerson.get('lastname').errors.minlength" id="message">The lastname must have at least 2 characters.</div>
+            <div *ngIf="formPerson.get('lastname').errors.pattern" id="message">The lastname can only contain letters and spaces.
+            </div>
+        </div>
+    </div>
+    <div>
+        <label class="m-3" for="email">Email: </label>
+        <input type="text" id="email" formControlName="email">
+        <div
+            *ngIf="formPerson.get('email').invalid && (formPerson.get('email').dirty || formPerson.get('email').touched)">
+            <div *ngIf="formPerson.get('email').errors.required" id="message">The email is required.</div>
+            <div *ngIf="formPerson.get('email').errors.email" id="message">The mail syntax is incorrec.</div>
+        </div>
+    </div>
+    </div>
+    <div class="half right cf">
+    <div>
+        <label for="age">Age: </label>
+        <input type="number" id="age" formControlName="age">
+        <div *ngIf="formPerson.get('age').invalid && (formPerson.get('age').dirty || formPerson.get('age').touched)">
+            <div *ngIf="formPerson.get('age').errors.required" id="message">The age is required.</div>
+            <div *ngIf="formPerson.get('age').errors.min" id="message">You are a minor.</div>
+            <div *ngIf="formPerson.get('age').errors.max" id="message">The age entered is not valid.</div>
+        </div>
+    </div>
+    <div>
+        <label class="m-3" for="address">Address: </label>
+        <input type="text" id="address" formControlName="address">
+        <div
+            *ngIf="formPerson.get('address').invalid && (formPerson.get('address').dirty || formPerson.get('address').touched)">
+            <div *ngIf="formPerson.get('address').errors.required" id="message">The address is required.</div>
+            <div *ngIf="formPerson.get('address').errors.minlength" id="message">The address is not valid.</div>
+        </div>
+    </div>
+    </div>
+    <button type="submit" [disabled]="formPerson.invalid" class="btn btn-success">Submit</button>
+</form>
+
+<router-outlet></router-outlet>
